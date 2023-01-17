@@ -12,7 +12,7 @@ const initialPilots = [
         phone: "+210018540241",
         email: "testg@example.com",
         distance: 23,
-        last_seen: "2023-01-16T14:46:44.728Z",
+        last_seen: Date.now() - (5 * 60 * 1000)
     },
     {
         pilotId: "A123456",
@@ -20,7 +20,7 @@ const initialPilots = [
         phone: "25215525",
         email: "test2g@example.com",
         distance: 11,
-        last_seen: "2023-01-16T14:46:44.728Z",
+        last_seen: Date.now() - (5 * 60 * 1000)
     },
   ]
   
@@ -52,7 +52,7 @@ test('existing pilot with new bigger distance wont be updated', async () => {
         phone: "+210018540241",
         email: "testg@example.com",
         distance: 35,
-        last_seen: "2023-01-16T14:46:44.728Z",
+        last_seen: Date.now()
     }
 
     updatePilot(testPilot, initialPilots[0])
@@ -70,7 +70,7 @@ test('existing pilot with new smaller distance updated', async () => {
         phone: "+210018540241",
         email: "testg@example.com",
         distance: 21,
-        last_seen: "2023-01-16T14:46:44.728Z",
+        last_seen: Date.now()
     }
 
     updatePilot(testPilot, initialPilots[0])
@@ -81,11 +81,6 @@ test('existing pilot with new smaller distance updated', async () => {
 
 
 })
-
-
-
-
-
 
 afterAll(() => {
   mongoose.connection.close()
